@@ -34,4 +34,18 @@ editor.apply();
 ![](./imgs/MXu6ts.png)
 
 
+配置文件存储的位置：`/data/data/<PackageName>/shared_prefs/` 目录下
+
+文件内容：
+
+```xml
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<map>
+    <string name="UserName">张三</string>
+    <string name="LoginDate">2019-09-24 09:34:19</string>
+    <string name="Name">张三</string>
+    <string name="STUDENT_ID">2017010695</string>
+</map>
+```
+
 
