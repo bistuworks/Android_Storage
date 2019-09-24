@@ -13,8 +13,9 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
     private final static String SharedPreferencesFileName = "config";
-    private final static String UserName = "UserName";
+    private final static String Name = "Name";
     private final static String LoginDate = "LoginDate";
+    private final static String STUDENT_ID = "STUDENT_ID";
 
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
@@ -30,10 +31,11 @@ public class MainActivity extends AppCompatActivity {
         readBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String userNameStr = sharedPreferences.getString(UserName, null);
+                String NameStr = sharedPreferences.getString(Name, null);
                 String loginDateStr = sharedPreferences.getString(LoginDate, null);
-                if (userNameStr != null && loginDateStr != null) {
-                    Toast.makeText(MainActivity.this, "用户名为：" + userNameStr + "\n" + "登录时间为：" + loginDateStr, Toast.LENGTH_SHORT).show();
+                String studentIdStr = sharedPreferences.getString(STUDENT_ID, null);
+                if (NameStr != null && loginDateStr != null && studentIdStr != null) {
+                    Toast.makeText(MainActivity.this, "姓名为：" + NameStr + "\n" + "学号为：" + studentIdStr + "\n" + "登录时间为：" + loginDateStr, Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(MainActivity.this, "无数据", Toast.LENGTH_SHORT).show();
                 }
@@ -46,7 +48,8 @@ public class MainActivity extends AppCompatActivity {
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
                 String LoginDateStr = simpleDateFormat.format(new Date());
 
-                editor.putString(UserName, "张三");
+                editor.putString(Name, "张三");
+                editor.putString(STUDENT_ID, "2017010695");
                 editor.putString(LoginDate, LoginDateStr);
                 editor.apply();
                 Toast.makeText(MainActivity.this, "数据写入成功", Toast.LENGTH_SHORT).show();
