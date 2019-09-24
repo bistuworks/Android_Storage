@@ -48,4 +48,58 @@ editor.apply();
 </map>
 ```
 
+# 使用本地文件形式存储数据
+
+## 读数据操作
+
+```java
+InputStream in = null;
+try {
+    FileInputStream fileInputStream = openFileInput(FILENAME);
+    in = new BufferedInputStream(fileInputStream);
+    int c;
+    StringBuilder builder = new StringBuilder("");
+    try {
+        while ((c = in.read()) != -1) {
+            builder.append((char) c);
+        }
+        Toast.makeText(MainActivity.this, builder.toString(), Toast.LENGTH_SHORT).show();
+    } finally {
+        if (in != null) {
+            in.close();
+        }
+    }
+} catch (Exception e) {
+    e.printStackTrace();
+}
+}
+```
+
+## 写数据操作
+
+```java
+OutputStream out = null;
+try {
+    FileOutputStream outputStream = openFileOutput(FILENAME, MODE_PRIVATE);
+    out = new BufferedOutputStream(outputStream);
+    String content = "Hello World!";
+    try {
+        out.write(content.getBytes(Charset.defaultCharset()));
+        out.flush();
+    } finally {
+        if (out != null) {
+            out.close();
+        }
+    }
+} catch (Exception e) {
+    e.printStackTrace();
+}
+```
+
+
+效果图：
+
+![](./imgs/GDf7hJ.png)
+
+
 
